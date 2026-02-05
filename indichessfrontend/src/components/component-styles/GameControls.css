@@ -1,0 +1,42 @@
+.game-controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.control-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 120px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.control-btn:hover {
+  transform: scale(1.05);  /* Slightly enlarge on hover */
+}
+
+.control-btn:active {
+  transform: scale(0.95);  /* Shrink on click */
+}
+
+.control-btn:first-child {
+  background-color: #f44336;  /* Red for Resign */
+  color: white;
+}
+
+.control-btn:first-child:hover {
+  background-color: #d32f2f;  /* Darker red on hover */
+}
+
+.control-btn:last-child {
+  background-color: #4caf50;  /* Green for Draw */
+  color: white;
+}
+
+.control-btn:last-child:hover {
+  background-color: #388e3c;  /* Darker green on hover */
+}

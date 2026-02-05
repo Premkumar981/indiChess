@@ -1,0 +1,224 @@
+.game-info-card {
+  background: var(--glass-bg);
+  padding: 3rem;
+  border-radius: 40px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-glow);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  max-width: 550px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(24px);
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.game-info-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(14, 165, 233, 0.3);
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.6), 0 0 30px rgba(14, 165, 233, 0.1);
+}
+
+.game-info-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(99, 102, 241, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+
+.game-info-card:hover::before {
+  background: radial-gradient(circle at center, rgba(99, 102, 241, 0.08) 0%, transparent 60%);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.stat-item {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.25rem;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.pulse-blue .stat-icon {
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--accent-blue);
+}
+
+.pulse-orange .stat-icon {
+  background: rgba(249, 115, 22, 0.1);
+  color: #f97316;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.main-play-btn {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  padding: 1.5rem;
+  border-radius: 16px;
+  color: white;
+  box-shadow: 0 10px 20px -5px rgba(56, 189, 248, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.main-play-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -5px rgba(56, 189, 248, 0.6);
+}
+
+.play-btn-content,
+.searching-btn-content {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+.play-text,
+.search-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.play-title,
+.search-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.play-subtitle {
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+.main-play-btn.searching {
+  background: var(--secondary-bg);
+  border: 2px solid var(--accent-blue);
+  color: var(--accent-blue);
+  box-shadow: none;
+}
+
+.search-timer {
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-family: monospace;
+}
+
+.secondary-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.sec-btn {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--text-dim);
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.sec-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+  border-color: var(--glass-border);
+}
+
+.searching-overlay {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.radar {
+  position: relative;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radar-circle {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--accent-blue);
+  border-radius: 50%;
+  animation: radar-pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+.radar-circle:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+.radar-circle:nth-child(3) {
+  animation-delay: 1.2s;
+}
+
+@keyframes radar-pulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.hint {
+  font-size: 0.875rem;
+  color: var(--text-dim);
+  font-style: italic;
+}

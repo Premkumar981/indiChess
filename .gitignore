@@ -1,0 +1,22 @@
+# Mac
+.DS_Store
+**/.DS_Store
+
+
+# Node
+node_modules/
+
+# Java
+target/
+
+# Logs
+*.log
+
+# Env & secrets
+.env
+.env.*
+**/application.properties
+
+# IDE
+.idea/
+.vscode/

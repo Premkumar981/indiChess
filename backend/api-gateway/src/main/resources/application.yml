@@ -1,0 +1,90 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:3000"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+            allowCredentials: true
+      default-filters:
+        - name: DedupeResponseHeader
+          args:
+            name: Access-Control-Allow-Origin Access-Control-Allow-Credentials
+            strategy: RETAIN_FIRST
+
+      routes:
+        - id: user-service-auth
+          uri: lb://user-service
+          predicates:
+            - Path=/,/login,/signup,/user/**
+          filters:
+            - PreserveHostHeader
+
+        - id: user-service-oauth2
+          uri: lb://user-service
+          predicates:
+            - Path=/oauth2/**,/login/oauth2/**
+          filters:
+            - PreserveHostHeader
+
+        - id: match-service-http
+          uri: lb://match-service
+          predicates:
+            - Path=/game/**
+
+        - id: match-service-ws
+          uri: lb://match-service
+          predicates:
+            - Path=/ws/**
+
+        - id: user-service-v1
+          uri: lb://user-service
+          predicates:
+            - Path=/api/v1/user/**
+          filters:
+            - StripPrefix=3
+
+        - id: match-service-v1
+          uri: lb://match-service
+          predicates:
+            - Path=/api/v1/match/**
+          filters:
+            - StripPrefix=3
+
+      discovery:
+        locator:
+          enabled: true
+
+server:
+  port: 8080
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty: DEBUG
+    reactor.netty.http.client: DEBUG
+    reactor.netty.http.server: DEBUG
+    io.netty: DEBUG
+    org.springframework.web.reactive: DEBUG
+    org.springframework.web.server: DEBUG
+    com.netflix.discovery: INFO
+    org.springframework.cloud.client.discovery: DEBUG
+    org.springframework.cloud.loadbalancer: DEBUG
+    org.springframework.cloud.gateway.handler.predicate: TRACE
+    org.springframework.cloud.gateway.handler.FilteringWebHandler: TRACE
