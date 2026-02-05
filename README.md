@@ -96,7 +96,13 @@ The application will be available at `http://localhost:3000`.
 ---
 
 ## 🤝 Contributing
-Welcome to the indiChess community! Feel free to open issues or submit pull requests to help us improve the game.
+
+Contributions are welcome!  
+Feel free to open issues, suggest improvements, or submit pull requests.
 
 ---
-*Created with ❤️ by the indiChess Team*
+
+## ❤️ Final Note
+
+Built with dedication, curiosity, and continuous learning.  
+**indiChess** is not just a project — it’s a step toward production-ready, real-time application development.
