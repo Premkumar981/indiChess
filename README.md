@@ -90,18 +90,6 @@ The application will be available at `http://localhost:3000`.
 
 ---
 
-## 📸 Screen Preview
-*(Add your stunning screenshots here or use `generate_image` tool to create a placeholder)*
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome!  
-Feel free to open issues, suggest improvements, or submit pull requests.
-
----
-
 ## ❤️ Final Note
 
 Built with dedication, curiosity, and continuous learning.  
